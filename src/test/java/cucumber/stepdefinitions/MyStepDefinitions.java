@@ -1,6 +1,7 @@
 package cucumber.stepdefinitions;
 
 import framework.AppiumDriverManager;
+import framework.BaseClass;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -11,7 +12,7 @@ public class MyStepDefinitions {
     private LoginPage loginPage;
 
     public MyStepDefinitions() {
-        loginPage = new LoginPage(AppiumDriverManager.getDriver());
+        loginPage = new LoginPage(BaseClass.driver);
     }
 
 
