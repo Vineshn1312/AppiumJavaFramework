@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.cucumber:cucumber-java:7.11.1'
+    implementation 'io.cucumber:cucumber-junit:7.11.1'
+    implementation 'io.cucumber:cucumber-junit-platform-engine:7.11.1'
+
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    implementation 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+    implementation 'org.junit.vintage:junit-vintage-engine:5.9.2'
+    implementation 'org.junit.platform:junit-platform-engine:1.9.2'
+    implementation 'org.junit.platform:junit-platform-launcher:1.9.2'
+    implementation 'org.junit.platform:junit-platform-runner:1.9.2'
+    implementation 'org.junit.platform:junit-platform-suite:1.9.2'
+    implementation group: 'net.masterthought', name: 'cucumber-reporting', version: '5.7.0'
+    implementation group: 'io.appium', name: 'java-client', version: '8.3.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
