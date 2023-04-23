@@ -5,13 +5,15 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import java.net.MalformedURLException;
-import java.net.URL;
+
+import java.util.concurrent.TimeUnit;
 
 public class AppiumDriverManager {
 
     public static AppiumDriver getDriver(AppiumDriverLocalService service) {
         if (BaseClass.driver == null) {
+
+
             DesiredCapabilities caps = new DesiredCapabilities();
             caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
             caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
@@ -19,13 +21,14 @@ public class AppiumDriverManager {
             caps.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
 
             BaseClass.driver = new AndroidDriver(service.getUrl(), caps);
+            BaseClass. driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
         }
         return BaseClass.driver;
     }
 
     public static void quitDriver() {
         if (BaseClass.driver != null) {
-            BaseClass.driver.quit();
+            BaseClass.driver.close();
             BaseClass.driver = null;
         }
     }

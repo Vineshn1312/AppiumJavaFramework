@@ -12,19 +12,20 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
+import java.net.MalformedURLException;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/resources/Features",
         glue = {"cucumber.stepdefinitions"},
         tags = "@ValidateFirstNews",
-        plugin = {"pretty", "html:target/cucumber-report.html"}
+        plugin = {"pretty", "html:Output/cucumber-report.html"}
 )
-public class AppiumTestRunner {
+public class TestRunner {
     private static AppiumDriverLocalService service;
 
     @BeforeClass
-    public static void startAppiumServerAndDriver() {
+    public static void startAppiumServerAndDriver() throws MalformedURLException {
 
         // Set the Appium server options
         AppiumServiceBuilder builder = new AppiumServiceBuilder()
